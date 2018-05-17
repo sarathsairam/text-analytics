@@ -25,7 +25,7 @@ create_dtm <- function(plain_text, documents){
   return (newdtm)
 }
 
-#Takes factors as input
+
 newly_added_words <- function(curr_var, prev_var){
   new_words <- setdiff(curr_var, prev_var)# checks the difference and gives only new words
   # new_words <- anti_join(curr_var, prev_var)# checks the difference and gives only new words
@@ -40,16 +40,17 @@ build_wordcloud <- function(dtm,
   require(wordcloud)
   if (ncol(dtm) > 20000){   # if dtm is very large, divide into smaller chunks
     
-    tst = round(ncol(dtm)/100)  # divide cols into 100 manageble parts
+    tst = round(ncol(dtm)/100)  # divide cols into 100 parts
     a = rep(tst,99)
     b = cumsum(a);rm(a) #Calculates the cumulative sum
     b = c(0,b,ncol(dtm))
     ss.col = c(NULL)
     for (i in 1:(length(b)-1)) {
-      tempdtm = dtm[,(b[i]+1):(b[i+1])]
-      s = colSums(as.matrix(tempdtm))
+      dtms = dtm[,(b[i]+1):(b[i+1])]
+      s = colSums(as.matrix(dtms))
       ss.col = c(ss.col,s)
-      print(i)      } # i loop ends
+      print(i)
+    } # i loop
     tsum = ss.col
   } else { tsum = apply(dtm, 2, sum) }
   tsum = tsum[order(tsum, decreasing = T)]    # terms in the decreasing order of frequency
@@ -61,7 +62,7 @@ build_wordcloud <- function(dtm,
                   scale = c(4, 0.5), # range of word sizes
                   minFreq = min.freq, # min.freq of words to consider
                   maxWords = max_words, # max #words
-                  # filename,
+                  # filename, #This can dynamically save the png file to local desktop if we specify
                   # format = c("png"),
                   width = 700, height = 700, units = "px",
                   palette = brewer.pal(8, "Dark2"), titleFactor = 1) # Plot results in a word cloud
