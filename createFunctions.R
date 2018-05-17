@@ -40,7 +40,7 @@ build_wordcloud <- function(dtm,
   require(wordcloud)
   if (ncol(dtm) > 20000){   # if dtm is very large, divide into smaller chunks
     
-    tst = round(ncol(dtm)/10)  # divide DTM's cols into 10 manageble parts
+    tst = round(ncol(dtm)/100)  # divide cols into 100 manageble parts
     a = rep(tst,99)
     b = cumsum(a);rm(a) #Calculates the cumulative sum
     b = c(0,b,ncol(dtm))
@@ -65,4 +65,5 @@ build_wordcloud <- function(dtm,
                   # format = c("png"),
                   width = 700, height = 700, units = "px",
                   palette = brewer.pal(8, "Dark2"), titleFactor = 1) # Plot results in a word cloud
+
 } # func ends
