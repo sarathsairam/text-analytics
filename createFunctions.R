@@ -33,7 +33,7 @@ newly_added_words <- function(curr_var, prev_var){
 }
 
 build_wordcloud <- function(dtm, 
-                            max_words=1000,     # max no. of words to accommodate
+                            max_words=100,     # max no. of words to accommodate
                             min.freq=1,       # min.freq of words to consider
                             plot.title="wordcloud",
                             filename){
@@ -55,22 +55,14 @@ build_wordcloud <- function(dtm,
   tsum = tsum[order(tsum, decreasing = T)]    # terms in the decreasing order of frequency
   head(tsum);    tail(tsum)
   
-  # windows()  # Opens a new plot window when active
   createWordcloud(names(tsum), # words
                   tsum, # their freqs
                   title = "Wordcloud",
-                  scale = c(3, 0.25), # range of word sizes
+                  scale = c(4, 0.5), # range of word sizes
                   minFreq = min.freq, # min.freq of words to consider
                   maxWords = max_words, # max #words
                   # filename,
                   # format = c("png"),
                   width = 700, height = 700, units = "px",
                   palette = brewer.pal(8, "Dark2"), titleFactor = 1) # Plot results in a word cloud
-  
-  #   wordcloud(names(tsum), tsum,     # words, their freqs 
-  #           scale = c(3, 0.25),     # range of word sizes
-  #           min.freq,                     # min.freq of words to consider
-  #           max.words = max.words1,       # max #words
-  #           colors = brewer.pal(8, "Dark2"))    # Plot results in a word cloud 
-  # title(sub = plot.title)     # title for the wordcloud display
 } # func ends
