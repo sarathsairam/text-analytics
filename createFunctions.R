@@ -33,7 +33,7 @@ newly_added_words <- function(curr_var, prev_var){
 }
 
 build_wordcloud <- function(dtm, 
-                            max_words=100,     # max no. of words to accommodate
+                            max_words=150,     # max no. of words to accommodate
                             min.freq=1,       # min.freq of words to consider
                             plot.title="wordcloud",
                             filename){
@@ -59,7 +59,7 @@ build_wordcloud <- function(dtm,
   createWordcloud(names(tsum), # words
                   tsum, # their freqs
                   title = "Wordcloud",
-                  scale = c(4, 0.5), # range of word sizes
+                  scale = c(2, 0.5), # range of word sizes
                   minFreq = min.freq, # min.freq of words to consider
                   maxWords = max_words, # max #words
                   # filename, #This can dynamically save the png file to local desktop if we specify
