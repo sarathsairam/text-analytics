@@ -35,7 +35,7 @@ newly_added_words <- function(curr_var, prev_var){
 build_wordcloud <- function(dtm, 
                             max_words=150,     # max no. of words to accommodate
                             min.freq=1,       # min.freq of words to consider
-                            plot.title="wordcloud",
+                            plot.title,
                             filename){
   require(wordcloud)
   if (ncol(dtm) > 20000){   # if dtm is very large, divide into smaller chunks
