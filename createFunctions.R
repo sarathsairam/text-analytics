@@ -58,7 +58,7 @@ build_wordcloud <- function(dtm,
   
   createWordcloud(names(tsum), # words
                   tsum, # their freqs
-                  title = "Wordcloud",
+                  title = plot.title,
                   scale = c(2, 0.5), # range of word sizes
                   minFreq = min.freq, # min.freq of words to consider
                   maxWords = max_words, # max #words
