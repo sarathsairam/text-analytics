@@ -21,7 +21,7 @@ linkhref = "https://raw.githubusercontent.com/sarathsairam/text-analytics/master
 shinyUI(
   fluidPage(
     
-    titlePanel("NLP Workflow"),
+    titlePanel("NLP Workflow (Rashmi, Sarath , Ramakrishna)"),
     
     sidebarLayout( 
       
